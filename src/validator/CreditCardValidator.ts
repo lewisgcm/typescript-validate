@@ -32,28 +32,32 @@ export class CreditCardValidator {
         VisaElectron: ( card: string ): boolean => {
             return (/^(4026|417500|4508|4844|4913|4917){1}.*$/.test(card) && card.length === 16); //Done
         },
-        Any:( card:string ) : boolean => {
+        Any:( value:string ) : boolean => {
             //As per http://www.freeformatter.com/credit-card-number-generator-validator.html
-            var numbers:number[] = <any>card.replace( /[^1234567890]/g ,'').split('');
-            var lastNumber = numbers.pop();
-            numbers.reverse();
-            var total = 0;
-            for( var i = 0; i < numbers.length; i++ ) {
-                numbers[i] = parseInt( <any>numbers[i] );
-                if( i % 2 == 0 ) {
-                    numbers[i] = numbers[i] * 2;
-                    if( numbers[i] > 9 ) {
-                        numbers[i] -= 9;
-                    }
+            //and https://gist.github.com/DiegoSalazar/4075533
+            // accept only digits, dashes or spaces
+            if (/[^0-9-\s]+/.test(value) || value.length == 0) return false;
+            var nCheck = 0, nDigit = 0, bEven = false;
+            value = value.replace(/\D/g, "");
+
+            for (var n = value.length - 1; n >= 0; n--) {
+                var cDigit = value.charAt(n),
+                        nDigit = parseInt(cDigit, 10);
+
+                if (bEven) {
+                    if ((nDigit *= 2) > 9) nDigit -= 9;
                 }
-                total += numbers[i];
+
+                nCheck += nDigit;
+                bEven = !bEven;
             }
-            return (total % 10 == lastNumber);
+
+            return (nCheck % 10) == 0;
         }
     }
 
     public static Validate( card: string, types: CreditCardType[] ): boolean {
-        if( CreditCardValidator._validateType.Any( card ) == false ) {
+        if( CreditCardValidator._validateType.Any( card ) == false) {
             return false;
         }
         var valid = true;
