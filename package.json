@@ -1,0 +1,26 @@
+{
+  "name": "validator-decorators",
+  "version": "1.0.0",
+  "description": "TypeScript Annotations for validation, sanitization and ORM like functionality for NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "build": "ntsc; node bin/main.js",
+    "test": "ntsc; mocha --recursive bin/tests"
+  },
+  "keywords": [
+    "typescript",
+    "validator",
+    "sanitization",
+    "orm"
+  ],
+  "author": "Lewis Maitland",
+  "license": "LGPL-3.0",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "mocha-typescript": "^1.0.4",
+    "ntypescript": "^1.201607112308.1",
+    "reflect-metadata": "^0.1.3",
+    "typings": "^1.3.1"
+  }
+}

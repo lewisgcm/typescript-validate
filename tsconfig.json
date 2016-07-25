@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "rootDir" : "src",
+        "outDir" : "bin"
+    },
+    "filesGlob": [
+        "src/**/*.ts",
+        "!node_modules/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "typings/global",
+        "typings/global.d.ts"
+    ]
+}
