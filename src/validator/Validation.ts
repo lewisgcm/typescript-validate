@@ -25,6 +25,25 @@ export class Validation {
         },
         Email: ( value: string, b ) => {
             return ( typeof value === "string" && /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test( value ) );
+        },
+        CreditCard: ( value: string ) => {
+            //As per http://www.freeformatter.com/credit-card-number-generator-validator.html
+            var numbers:number[] = <any>value.replace( /[^1234567890]/g ,'').split('');
+            var lastNumber = numbers.pop();
+            numbers.reverse();
+            var total = 0;
+            for( var i = 0; i < numbers.length; i++ ) {
+                numbers[i] = parseInt( <any>numbers[i] );
+                if( i % 2 == 0 ) {
+                    numbers[i] = numbers[i] * 2;
+                    if( numbers[i] > 9 ) {
+                        numbers[i] -= 9;
+                    }
+                }
+                total += numbers[i];
+            }
+
+            return (total % 10 == lastNumber);
         }
     };
 

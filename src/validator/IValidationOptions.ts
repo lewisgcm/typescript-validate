@@ -12,4 +12,5 @@ export interface IValidationOptions {
     Number?: INumberValidationOptions;
     String?: IStringValidationOptions;
     Email?: boolean;
+    CreditCard?: boolean;
 }
