@@ -1,5 +1,5 @@
 {
-  "name": "validator-decorators",
+  "name": "typescript-validate",
   "version": "1.0.0",
   "description": "TypeScript Annotations for validation and sanitization",
   "main": "src/index.js",
