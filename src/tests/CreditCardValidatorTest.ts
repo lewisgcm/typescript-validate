@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Validator, Validate } from "../validator/index";
+import { Validator, Validate, CreditCardType } from "../validator/index";
 import { SanitizationType, Sanitize, Sanitizor } from "../sanitizor/index";
 import { suite, test, slow, timeout, skip, only } from "mocha-typescript";
 import * as Chai from "chai";
@@ -13,11 +13,11 @@ class CreditCardValidatorTestSuite {
     before() {
     }
 
-    @test("CreditCard validator valid")
-    creditCardValidatorValid() {
+    @test("CreditCard validator visa valid")
+    creditCardValidatorVisaValid() {
         class Test {
             @Validate({
-                CreditCard: true
+                CreditCard: [ CreditCardType.Visa ]
             })
             private _id: string = "4556737586899855";
         }
@@ -30,7 +30,7 @@ class CreditCardValidatorTestSuite {
     creditCardValidatorInvalidEmpty() {
         class Test {
             @Validate({
-                CreditCard: true
+                CreditCard: []
             })
             private _id: string = "";
         }
@@ -43,7 +43,7 @@ class CreditCardValidatorTestSuite {
     creditCardValidatorInvalid() {
         class Test {
             @Validate({
-                CreditCard: true
+                CreditCard: []
             })
             private _id: string = "45567375868998553";
         }

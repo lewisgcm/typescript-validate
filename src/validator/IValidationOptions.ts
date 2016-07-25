@@ -1,3 +1,5 @@
+import { CreditCardType } from "./CreditCardValidator";
+
 export interface IStringValidationOptions {
     MinLength?: number;
     MaxLength?: number;
@@ -12,5 +14,5 @@ export interface IValidationOptions {
     Number?: INumberValidationOptions;
     String?: IStringValidationOptions;
     Email?: boolean;
-    CreditCard?: boolean;
+    CreditCard?: CreditCardType[];
 }

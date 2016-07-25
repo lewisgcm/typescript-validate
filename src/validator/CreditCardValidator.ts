@@ -1,5 +1,5 @@
 export enum CreditCardType {
-    AmericanExpress, Discover, InstaPayment, JCB, Laser, Maestro, MasterCard, Visa, VisaElectron, Any
+    AmericanExpress, Discover, InstaPayment, JCB, Laser, Maestro, MasterCard, Visa, VisaElectron
 }
 
 export class CreditCardValidator {
@@ -31,6 +31,37 @@ export class CreditCardValidator {
         },
         VisaElectron: ( card: string ): boolean => {
             return (/^(4026|417500|4508|4844|4913|4917){1}.*$/.test(card) && card.length === 16); //Done
+        },
+        Any:( card:string ) : boolean => {
+            //As per http://www.freeformatter.com/credit-card-number-generator-validator.html
+            var numbers:number[] = <any>card.replace( /[^1234567890]/g ,'').split('');
+            var lastNumber = numbers.pop();
+            numbers.reverse();
+            var total = 0;
+            for( var i = 0; i < numbers.length; i++ ) {
+                numbers[i] = parseInt( <any>numbers[i] );
+                if( i % 2 == 0 ) {
+                    numbers[i] = numbers[i] * 2;
+                    if( numbers[i] > 9 ) {
+                        numbers[i] -= 9;
+                    }
+                }
+                total += numbers[i];
+            }
+            return (total % 10 == lastNumber);
         }
+    }
+
+    public static Validate( card: string, types: CreditCardType[] ): boolean {
+        if( CreditCardValidator._validateType.Any( card ) == false ) {
+            return false;
+        }
+        var valid = true;
+        for( var i = 0; i < types.length; i++ ) {
+            if( CreditCardValidator._validateType[ CreditCardType[ types[i] ] ]( card ) == false ) {
+                valid = false;
+            }
+        }
+        return valid;
     }
 }
