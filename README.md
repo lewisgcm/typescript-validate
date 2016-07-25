@@ -34,4 +34,8 @@ class User {
     })
     private _creditCard: string;
 }
+
+var user = new User();
+Sanitizor.Sanitize( user );
+Validator.Valid( user );
 ```
