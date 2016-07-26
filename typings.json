@@ -3,6 +3,7 @@
     "chai": "registry:dt/chai#3.4.0+20160601211834",
     "mocha": "registry:dt/mocha#2.2.5+20160720003353",
     "moment": "registry:dt/moment#2.8.0+20160316155526",
+    "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
     "node": "registry:dt/node#6.0.0+20160709114037",
     "reflect-metadata": "registry:dt/reflect-metadata#0.0.0+20160630155503"
   }
