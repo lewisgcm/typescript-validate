@@ -7,7 +7,8 @@
     "build": "ntsc; node bin/main.js",
     "test": "ntsc; mocha --recursive bin/tests",
     "coverage": "istanbul cover node_modules/.bin/_mocha bin/tests --include-all-sources true; remap-istanbul -i coverage/coverage.json -t lcovonly -o lcov.info",
-    "coveralls": "npm run coverage; cat lcov.info | coveralls"
+    "coveralls": "npm run coverage; cat lcov.info | coveralls",
+    "postinstall": "typings install"
   },
   "keywords": [
     "typescript",
