@@ -2,11 +2,10 @@
   "name": "typescript-validate",
   "version": "1.0.0",
   "description": "TypeScript Annotations for validation and sanitization",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "build": "ntsc; node bin/main.js",
-    "test": "ntsc; mocha --recursive bin/tests",
-    "coverage": "istanbul cover node_modules/.bin/_mocha bin/tests --include-all-sources true; remap-istanbul -i coverage/coverage.json -t lcovonly -o lcov.info",
+    "test": "ntsc; mocha --recursive build/test",
+    "coverage": "istanbul cover node_modules/.bin/_mocha build/test --include-all-sources true; remap-istanbul -i coverage/coverage.json -t lcovonly -o lcov.info",
     "coveralls": "npm run coverage; cat lcov.info | coveralls",
     "postinstall": "typings install"
   },

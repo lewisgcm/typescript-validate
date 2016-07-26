@@ -5,11 +5,11 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "sourceMap": true,
-        "rootDir" : "src",
-        "outDir" : "bin"
+        "outDir" : "build"
     },
     "filesGlob": [
         "src/**/*.ts",
+        "test/*.ts",
         "!node_modules/**/*"
     ],
     "exclude": [
