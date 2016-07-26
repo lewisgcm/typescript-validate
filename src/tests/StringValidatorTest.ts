@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { Validator, Validate } from "../validator/index";
-import { SanitizationType, Sanitize, Sanitizor } from "../sanitizor/index";
+import { SanitizationType, Sanitize, Sanitizor } from "../main";
 import { suite, test, slow, timeout, skip, only } from "mocha-typescript";
 import * as Chai from "chai";
 
