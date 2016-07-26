@@ -60,10 +60,10 @@ export class CreditCardValidator {
         if( CreditCardValidator._validateType.Any( card ) == false) {
             return false;
         }
-        var valid = true;
+        var valid = false;
         for( var i = 0; i < types.length; i++ ) {
-            if( CreditCardValidator._validateType[ CreditCardType[ types[i] ] ]( card ) == false ) {
-                valid = false;
+            if( CreditCardValidator._validateType[ CreditCardType[ types[i] ] ]( card ) == true ) {
+                valid = true;
             }
         }
         return valid;

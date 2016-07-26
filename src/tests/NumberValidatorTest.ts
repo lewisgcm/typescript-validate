@@ -13,6 +13,21 @@ class NumberValidatorTestSuite {
     before() {
     }
 
+    @test("Number validator not a number invalid")
+    numberValidatorNotANumberInvalid() {
+        class Test {
+            @Validate({
+                Number: {
+                    Min: 1
+                }
+            })
+            private _id: number = <any>"Hello World";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) == false );
+    }
+
     @test("Number validator min only valid")
     numberValidatorMinValid() {
         class Test {

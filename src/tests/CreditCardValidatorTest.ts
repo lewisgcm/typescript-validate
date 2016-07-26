@@ -58,6 +58,21 @@ class CreditCardValidatorTestSuite {
         Chai.assert( Validator.Valid( t ) == false );
     }
 
+    @test("CreditCard validator VisaElectronAndMasterCard")
+    creditCardValidatorVisaElectronAndMasterCard() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.VisaElectron, CreditCardType.MasterCard ]
+            })
+            public _test: string = "4175007073118628";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) );
+        t._test = "5175007073118628";
+        Chai.assert( Validator.Valid( t ) == false );
+    }
+
     @test("CreditCard validator Maestro")
     creditCardValidatorMaestro() {
         class Test {
@@ -110,6 +125,21 @@ class CreditCardValidatorTestSuite {
                 CreditCard: [ CreditCardType.Discover ]
             })
             public _test: string = "6011661459031392";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) );
+        t._test = "4011661459031392";
+        Chai.assert( Validator.Valid( t ) == false );
+    }
+
+    @test("CreditCard validator JCB")
+    creditCardValidatorJCB() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.JCB ]
+            })
+            public _test: string = "3566002020360505";
         }
 
         var t = new Test();
