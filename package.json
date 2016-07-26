@@ -8,7 +8,7 @@
     "test": "ntsc; mocha --recursive build/test",
     "coverage": "istanbul cover node_modules/.bin/_mocha build/test --include-all-sources true; remap-istanbul -i coverage/coverage.json -t lcovonly -o lcov.info",
     "coveralls": "npm run coverage; cat lcov.info | coveralls",
-    "build" : "ntsc --outFile index.js --module system src/**/*.ts typings/index.d.ts --declaration",
+    "build_module" : "ntsc --outFile index.js --module system src/**/*.ts typings/index.d.ts --declaration",
     "postinstall": "typings install;",
     "prepublish": "npm run build"
   },
