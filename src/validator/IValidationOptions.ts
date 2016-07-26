@@ -15,4 +15,7 @@ export interface IValidationOptions {
     String?: IStringValidationOptions;
     Email?: boolean;
     CreditCard?: CreditCardType[];
+    Pattern?: RegExp;
+    URL?: boolean;
+    Time?: string;
 }
