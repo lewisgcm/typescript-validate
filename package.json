@@ -5,6 +5,7 @@
   "main": "index.js",
   "typings" : "index.d.ts",
   "scripts": {
+    "build" : "ntsc",
     "test": "ntsc; mocha --recursive build/test",
     "coverage": "istanbul cover node_modules/.bin/_mocha build/test --include-all-sources true; remap-istanbul -i coverage/coverage.json -t lcovonly -o lcov.info",
     "coveralls": "npm run coverage; cat lcov.info | coveralls",
