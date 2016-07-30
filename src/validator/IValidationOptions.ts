@@ -1,5 +1,5 @@
 import { CreditCardType } from './CreditCardValidator';
-import { PostcodeLocale } from './PostCodeValidator'
+import { PostcodeLocale } from './PostcodeValidator'
 
 export interface IStringValidationOptions {
     MinLength?: number;
