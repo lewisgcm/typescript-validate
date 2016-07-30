@@ -1,5 +1,6 @@
-import { IValidationOptions, INumberValidationOptions, IStringValidationOptions } from "./IValidationOptions";
-import { CreditCardType, CreditCardValidator } from "./CreditCardValidator";
+import { IValidationOptions, INumberValidationOptions, IStringValidationOptions } from './IValidationOptions';
+import { CreditCardType, CreditCardValidator } from './CreditCardValidator';
+import { PostcodeLocale, PostcodeValidator } from './PostcodeValidator';
 import * as Moment from "moment";
 
 export class Validation {
@@ -8,20 +9,20 @@ export class Validation {
         Number: ( value: number, options: INumberValidationOptions ) => {
             if( typeof value !== "number" )
                 return false;
-            
+
             if( options.Max !== undefined && options.Min !== undefined )
                 return value < options.Max && value > options.Min;
-            
+
             return ( options.Max !== undefined && value < options.Max ) ||
                    ( options.Min !== undefined && value > options.Min );
         },
         String: ( value: string , options: IStringValidationOptions ) => {
             if( typeof value !== "string" )
                 return false;
-            
+
             if( options.MaxLength !== undefined && options.MinLength !== undefined )
                 return value.length < options.MaxLength && value.length > options.MinLength;
-            
+
             return ( options.MaxLength !== undefined && value.length < options.MaxLength ) ||
                    ( options.MinLength !== undefined && value.length > options.MinLength );
         },
@@ -39,6 +40,9 @@ export class Validation {
         },
         Time: ( value:string, format:string ) => {
             return Moment( value, format ).isValid();
+        },
+        Postcode: (value: string, options: PostcodeLocale[]) => {
+            return PostcodeValidator.Validate(value, options);
         }
     };
 

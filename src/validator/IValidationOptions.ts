@@ -1,4 +1,5 @@
-import { CreditCardType } from "./CreditCardValidator";
+import { CreditCardType } from './CreditCardValidator';
+import { PostcodeLocale } from './PostCodeValidator'
 
 export interface IStringValidationOptions {
     MinLength?: number;
@@ -18,4 +19,5 @@ export interface IValidationOptions {
     Pattern?: RegExp;
     URL?: boolean;
     Time?: string;
+    Postcode? : PostcodeLocale[];
 }
