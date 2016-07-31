@@ -8,7 +8,7 @@
 ## Getting Started
 Using this package is simple and can be achevied with the following:
 ```bash
-npm install validator-decorators
+npm install typescript-validate
 ```
 
 ## Contributing
@@ -17,6 +17,8 @@ Please contribute if you have any additions.
 ## Quick Start 
 
 ```typescript
+import { Sanitize, Validate, Sanitizor, Validator } from "typescript-validate";
+
 class User {
 
     @Sanitize([
