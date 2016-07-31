@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Validator, Validate, PostcodeLocale } from "../src/validator/index";
+import { Validator, Validate, PostcodeLocale } from "../src/index";
 import { suite, test, slow, timeout, skip, only } from "mocha-typescript";
 import * as Chai from "chai";
 

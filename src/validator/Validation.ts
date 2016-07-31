@@ -1,11 +1,11 @@
-import { IValidationOptions, INumberValidationOptions, IStringValidationOptions } from './IValidationOptions';
+import { IValidationOptions, INumberValidationOptions, IStringValidationOptions, ITimeValidationOptions } from './IValidationOptions';
 import { CreditCardType, CreditCardValidator } from './CreditCardValidator';
 import { PostcodeLocale, PostcodeValidator } from './PostcodeValidator';
 import * as Moment from "moment";
 
 export class Validation {
 
-    private static _validationRules = {
+    private static _validationRules: any = {
         Number: ( value: number, options: INumberValidationOptions ) => {
             if( typeof value !== "number" )
                 return false;
@@ -38,8 +38,8 @@ export class Validation {
         URL: ( value: any ) => {
             return /\(?(?:(http|https|ftp):\/\/)?(?:((?:[^\W\s]|\.|-|[:]{1})+)@{1})?((?:www.)?(?:[^\W\s]|\.|-)+[\.][^\W\s]{2,4}|localhost(?=\/)|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::(\d*))?([\/]?[^\s\?]*[\/]{1})*(?:\/?([^\s\n\?\[\]\{\}\#]*(?:(?=\.)){1}|[^\s\n\?\[\]\{\}\.\#]*)?([\.]{1}[^\s\?\#]*)?)?(?:\?{1}([^\s\n\#\[\]]*))?([\#][^\s\n]*)?\)?/gi.test( value );
         },
-        Time: ( value:string, format:string ) => {
-            return Moment( value, format ).isValid();
+        Time: ( value:string, options:ITimeValidationOptions ) => {
+            return Moment( value, options.Format, options.Locale ).isValid();
         },
         Postcode: (value: string, options: PostcodeLocale[]) => {
             return PostcodeValidator.Validate(value, options);

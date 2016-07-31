@@ -3,7 +3,7 @@ export enum PostcodeLocale {
 }
 
 export class PostcodeValidator {
-    private static _postcodeLocale = {
+    private static _postcodeLocale: any = {
         AF: (postcode: string): boolean => {
             return (/^(\b((4[0-3]|[1-3][0-9])(?:[0-9][0-9]))\b)$/.test(postcode));
         },

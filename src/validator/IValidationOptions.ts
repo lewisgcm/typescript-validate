@@ -11,6 +11,11 @@ export interface INumberValidationOptions {
     Max?: number;
 }
 
+export interface ITimeValidationOptions {
+    Format: string;
+    Locale?: string;
+}
+
 export interface IValidationOptions {
     Number?: INumberValidationOptions;
     String?: IStringValidationOptions;
@@ -18,6 +23,6 @@ export interface IValidationOptions {
     CreditCard?: CreditCardType[];
     Pattern?: RegExp;
     URL?: boolean;
-    Time?: string;
+    Time?: ITimeValidationOptions;
     Postcode? : PostcodeLocale[];
 }

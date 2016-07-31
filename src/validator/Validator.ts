@@ -1,5 +1,5 @@
 import { Validation } from "./Validation";
-import { IValidationOptions, INumberValidationOptions, IStringValidationOptions } from "./IValidationOptions";
+import { IValidationOptions, INumberValidationOptions, IStringValidationOptions, ITimeValidationOptions } from "./IValidationOptions";
 import "reflect-metadata";
 
 export class Validator {

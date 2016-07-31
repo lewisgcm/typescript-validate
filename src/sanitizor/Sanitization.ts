@@ -4,7 +4,7 @@ export enum SanitizationType {
 
 export class Sanitization {
 
-    private static _sanitizationRules = {
+    private static _sanitizationRules: any = {
         Trim: ( value: string ) => {
             return (typeof value !== "string") ? value: value.trim();
         },
@@ -33,7 +33,7 @@ export class Sanitization {
 
     Sanitize( value: any ): any {
         for( var i = 0; i < this._sanitization.length; i++ ) {
-            value = Sanitization._sanitizationRules[ SanitizationType[ this._sanitization[i] ] ]( value );
+            value = Sanitization._sanitizationRules[ SanitizationType[ this._sanitization[i] ] ]( <any>value );
         }
         return value;
     }
