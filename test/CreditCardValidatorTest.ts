@@ -13,8 +13,8 @@ class CreditCardValidatorTestSuite {
     before() {
     }
 
-    @test("CreditCard validator visa")
-    creditCardValidatorVisa() {
+    @test("CreditCard validator - Valid Visa")
+    creditCardVaalidVisa() {
         class Test {
             @Validate({
                 CreditCard: [ CreditCardType.Visa ]
@@ -24,12 +24,24 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "5556737586899855";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator visa electron")
-    creditCardValidatorVisaElectron() {
+
+    @test("CreditCard validator - Invalid Visa")
+    creditCardInvalidVisa() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.Visa ]
+            })
+            public _test: string = "5556737586899855";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false );
+    }
+
+    @test("CreditCard validator - Valid Visa Electron")
+    creditCardValidVisaElectron() {
         class Test {
             @Validate({
                 CreditCard: [ CreditCardType.VisaElectron ]
@@ -39,11 +51,22 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "5175007073118628";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator mastercard")
+    @test("CreditCard validator - Invalid Visa Electron")
+    creditCardInvalidVisaElectron() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.VisaElectron ]
+            })
+            public _test: string = "5175007073118628";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false );
+    }
+
+    @test("CreditCard validator - Valid mastercard")
     creditCardValidatorMasterCard() {
         class Test {
             @Validate({
@@ -54,11 +77,23 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "5656155352766911";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator VisaElectronAndMasterCard")
+
+    @test("CreditCard validator - Invalid Mastercard")
+    creditCardInvalidMasterCard() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.MasterCard ]
+            })
+            public _test: string = "5656155352766911";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false );
+    }
+
+    @test("CreditCard validator - Valid VisaElectronAndMasterCard")
     creditCardValidatorVisaElectronAndMasterCard() {
         class Test {
             @Validate({
@@ -69,12 +104,24 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "5175007073118628";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator Maestro")
-    creditCardValidatorMaestro() {
+
+    @test("CreditCard validator - Invalid VisaElectronAndMasterCard")
+    creditCardInValidVisaElectronAndMasterCard() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.VisaElectron, CreditCardType.MasterCard ]
+            })
+            public _test: string = "5175007073118628";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false );
+    }
+
+    @test("CreditCard validator - Valid Maestro")
+    creditCardValidMaestro() {
         class Test {
             @Validate({
                 CreditCard: [ CreditCardType.Maestro ]
@@ -84,12 +131,23 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "6859533087580411";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator Laser")
-    creditCardValidatorLaser() {
+    @test("CreditCard validator - Invalid Maestro")
+    creditCardInvalidMaestro() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.Maestro ]
+            })
+            public _test: string = "6859533087580411";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false);
+    }
+
+    @test("CreditCard validator - Valid Laser")
+    creditCardValidLaser() {
         class Test {
             @Validate({
                 CreditCard: [ CreditCardType.Laser ]
@@ -99,12 +157,23 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "6209697384003921";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator InstaPayment")
-    creditCardValidatorInstaPayment() {
+    @test("CreditCard validator - Invalid Laser")
+    creditCardInvalidLaser() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.Laser ]
+            })
+            public _test: string = "6209697384003921";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false );
+    }
+
+    @test("CreditCard validator - Valid InstaPayment")
+    creditCardValidInstaPayment() {
         class Test {
             @Validate({
                 CreditCard: [ CreditCardType.InstaPayment ]
@@ -114,12 +183,24 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "4382908315958024";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator Discover")
-    creditCardValidatorDiscover() {
+
+    @test("CreditCard validator - Invalid InstaPayment")
+    creditCardInvalidInstaPayment() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.InstaPayment ]
+            })
+            public _test: string = "4382908315958024";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false );
+    }
+
+    @test("CreditCard validator - Valid Discover")
+    creditCardValidDiscover() {
         class Test {
             @Validate({
                 CreditCard: [ CreditCardType.Discover ]
@@ -129,12 +210,24 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "4011661459031392";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator JCB")
-    creditCardValidatorJCB() {
+
+    @test("CreditCard validator - Invalid Discover")
+    creditCardInvalidDiscover() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.Discover ]
+            })
+            public _test: string = "4011661459031392";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false );
+    }
+
+    @test("CreditCard validator - Valid JCB")
+    creditCardValidJCB() {
         class Test {
             @Validate({
                 CreditCard: [ CreditCardType.JCB ]
@@ -144,12 +237,24 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "4011661459031392";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator AmericanExpress")
-    creditCardValidatorAmericanExpress() {
+
+    @test("CreditCard validator - Invalid JCB")
+    creditCardInvalidJCB() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.JCB ]
+            })
+            public _test: string = "4011661459031392";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false );
+    }
+
+    @test("CreditCard validator - Valid AmericanExpress")
+    creditCardValidAmericanExpress() {
         class Test {
             @Validate({
                 CreditCard: [ CreditCardType.AmericanExpress ]
@@ -159,11 +264,23 @@ class CreditCardValidatorTestSuite {
 
         var t = new Test();
         Chai.assert( Validator.Valid( t ) );
-        t._test = "274933238994958";
-        Chai.assert( Validator.Valid( t ) == false );
     }
 
-    @test("CreditCard validator invalid empty")
+
+    @test("CreditCard validator - Invalid AmericanExpress")
+    creditCardInalidAmericanExpress() {
+        class Test {
+            @Validate({
+                CreditCard: [ CreditCardType.AmericanExpress ]
+            })
+            public _test: string = "274933238994958";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) === false );
+    }
+
+    @test("CreditCard validator - Invalid Empty")
     creditCardValidatorInvalidEmpty() {
         class Test {
             @Validate({
@@ -173,10 +290,10 @@ class CreditCardValidatorTestSuite {
         }
 
         var t = new Test();
-        Chai.assert( Validator.Valid( t ) == false );
+        Chai.assert( Validator.Valid( t ) === false );
     }
 
-    @test("CreditCard validator invalid")
+    @test("CreditCard validator - Invalid")
     creditCardValidatorInvalid() {
         class Test {
             @Validate({
@@ -186,6 +303,6 @@ class CreditCardValidatorTestSuite {
         }
 
         var t = new Test();
-        Chai.assert( Validator.Valid( t ) == false );
+        Chai.assert( Validator.Valid( t ) === false );
     }
 }
