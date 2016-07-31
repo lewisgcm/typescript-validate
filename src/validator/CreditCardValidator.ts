@@ -4,7 +4,7 @@ export enum CreditCardType {
 
 export class CreditCardValidator {
 
-    private static _validateType = {
+    private static _validateType: any = {
         AmericanExpress: ( card: string ): boolean => {
             return (/^(34|37){1}.*$/.test(card) && card.length === 15);
         },
@@ -60,8 +60,8 @@ export class CreditCardValidator {
         if( CreditCardValidator._validateType.Any( card ) === false) {
             return false;
         }
-        var valid = false;
-        for( var i = 0; i < types.length; i++ ) {
+        var valid: boolean = false;
+        for( var i: number = 0; i < types.length; i++ ) {
             if( CreditCardValidator._validateType[ CreditCardType[ types[i] ] ]( card ) === true ) {
                 valid = true;
             }

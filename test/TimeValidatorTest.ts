@@ -17,7 +17,9 @@ class TimeValidatorTestSuite {
     TimeValidatorValid() {
         class Test {
             @Validate({
-                Time: "HH:MM:SS"
+                Time: {
+                    Format: "HH:MM:SS"
+                }
             })
             private _id: string = "10:09:15";
         }
@@ -30,7 +32,9 @@ class TimeValidatorTestSuite {
     TimeValidatorInvalidFormat() {
         class Test {
             @Validate({
-                Time: "DD HH:MM:SS"
+                Time: {
+                    Format: "DD HH:MM:SS"
+                }
             })
             private _id: string = "10:09:15";
         }
@@ -43,7 +47,9 @@ class TimeValidatorTestSuite {
     TimeValidatorValidGBDate() {
         class Test {
             @Validate({
-                Time: "DD-MM-YYYY"
+                Time: {
+                    Format: "DD-MM-YYYY"
+                }
             })
             private _id: string = "20-09-2015";
         }
@@ -56,7 +62,9 @@ class TimeValidatorTestSuite {
     TimeValidatorValidUSDate() {
         class Test {
             @Validate({
-                Time: "MM-DD-YYYY"
+                Time: {
+                    Format: "MM-DD-YYYY"
+                }
             })
             private _id: string = "10-20-2015";
         }
@@ -65,11 +73,29 @@ class TimeValidatorTestSuite {
         Chai.assert( Validator.Valid( t ) );
     }
 
+    @test("Time validator invalid English text date")
+    TimeValidatorInvalidENDate() {
+        class Test {
+            @Validate({
+                Time: {
+                    Format: "LLLL",
+                    Locale: "en"
+                }
+            })
+            private _id: string = "Freitag, 24. Juni 2016 01:42";
+        }
+
+        var t = new Test();
+        Chai.assert( Validator.Valid( t ) == false );
+    }
+
     @test("Time validator invalid")
     TimeValidatorInvalid() {
         class Test {
             @Validate({
-                Time: "HH:MM:SS"
+                Time: {
+                    Format: "HH:MM:SS"
+                }
             })
             private _id: string = "zzzz";
         }

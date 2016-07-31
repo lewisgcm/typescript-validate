@@ -46,12 +46,17 @@ class User {
     private website: string;
 
     @Validate({
-        Time: "dd/mm/YY"
+        Time: {
+            Format: "dd/mm/YY"
+        }
     })
     private dob: string;
 
     @Validate({
-        Time: "HH:MM:SS"
+        Time: {
+            Fromat: "HH:MM:SS",
+            Locale: "en" //If textual dates are supplied only english are valid
+        }
     })
     private sentAt: string;
 
