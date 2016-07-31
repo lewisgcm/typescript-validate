@@ -57,12 +57,12 @@ export class CreditCardValidator {
     }
 
     public static Validate( card: string, types: CreditCardType[] ): boolean {
-        if( CreditCardValidator._validateType.Any( card ) == false) {
+        if( CreditCardValidator._validateType.Any( card ) === false) {
             return false;
         }
         var valid = false;
         for( var i = 0; i < types.length; i++ ) {
-            if( CreditCardValidator._validateType[ CreditCardType[ types[i] ] ]( card ) == true ) {
+            if( CreditCardValidator._validateType[ CreditCardType[ types[i] ] ]( card ) === true ) {
                 valid = true;
             }
         }

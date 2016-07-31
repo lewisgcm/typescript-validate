@@ -14,7 +14,7 @@ class CreditCardValidatorTestSuite {
     }
 
     @test("CreditCard validator - Valid Visa")
-    creditCardVaalidVisa() {
+    creditCardValidVisa() {
         class Test {
             @Validate({
                 CreditCard: [ CreditCardType.Visa ]
