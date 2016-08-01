@@ -9,6 +9,21 @@ class PostcodeValidatorTestSuite {
 
     before() {}
 
+    @test('Postcode validator - AC')
+    postcodeAC() {
+        class Test {
+            @Validate({
+                Postcode: [PostcodeLocale.AC]
+            })
+            public postcode: string = 'ASCN 1ZZ';
+        }
+        var test = new Test();
+        Chai.assert(Validator.Valid(test), 'Valid postcode fails');
+        // Test for invlaid
+        test.postcode = '0099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
+    }
+
     @test('Postcode validator - AF')
     postcodeAF() {
         class Test {
@@ -19,12 +34,12 @@ class PostcodeValidatorTestSuite {
         }
         var test = new Test();
         Chai.assert(Validator.Valid(test), 'Valid postcode fails');
-        // update to invalid
+        // Test for invlaid
         test.postcode = '0099';
         Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
     }
 
-    @test('Postcoed validator - AX')
+    @test('Postcode validator - AX')
     postcodeAX() {
         class Test {
             @Validate({
@@ -34,8 +49,21 @@ class PostcodeValidatorTestSuite {
         }
         var test = new Test();
         Chai.assert(Validator.Valid(test), 'Valid postcode fails')
+        // AX- is optional
+        test.postcode = 'AX-22345';
+        Chai.assert(Validator.Valid(test),
+            'Valid postcode with correct optional country code fails');
         test.postcode = '11897';
         Chai.assert(Validator.Valid(test) === false, 'Invlaid postcode fails');
+        test.postcode = 'AX-11897';
+        Chai.assert(Validator.Valid(test) === false,
+            'Invlaid postcode with correct optional country code fails');
+        test.postcode = 'AB-22345';
+        Chai.assert(Validator.Valid(test) === false,
+            'Valid postcode with incorrect optional country code fails');
+        test.postcode = 'AB-11897';
+        Chai.assert(Validator.Valid(test) === false,
+            'Inalid postcode with incorrect optional country code fails');
     }
 
     @test('Postcode validator - GB')
