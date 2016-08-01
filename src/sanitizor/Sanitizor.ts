@@ -11,7 +11,7 @@ export class Sanitizor {
                 }
             }
         }
-    } 
+    }
 }
 
 export function Sanitize( types: SanitizationType[] ) {
