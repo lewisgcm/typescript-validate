@@ -24,6 +24,36 @@ class PostcodeValidatorTestSuite {
         Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
     }
 
+    @test('Postcode validator - AD')
+    postcodeAD() {
+        class Test {
+            @Validate({
+                Postcode: [PostcodeLocale.AD]
+            })
+            public postcode: string = 'AD123';
+        }
+        var test = new Test();
+        Chai.assert(Validator.Valid(test), 'Valid postcode fails');
+        // Test for invlaid
+        test.postcode = '0099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
+    }
+
+    @test('Postcode validator - AE')
+    postcodeAE() {
+        class Test {
+            @Validate({
+                Postcode: [PostcodeLocale.AE]
+            })
+            public postcode: string = '';
+        }
+        var test = new Test();
+        Chai.assert(Validator.Valid(test), 'Valid postcode fails');
+        // Test for invlaid
+        test.postcode = '0099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
+    }
+
     @test('Postcode validator - AF')
     postcodeAF() {
         class Test {
@@ -31,6 +61,100 @@ class PostcodeValidatorTestSuite {
                 Postcode: [PostcodeLocale.AF]
             })
             public postcode: string = '1012';
+        }
+        var test = new Test();
+        Chai.assert(Validator.Valid(test), 'Valid postcode fails');
+        // Test for invlaid
+        test.postcode = '0099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
+    }
+
+    @test('Postcode validator - AG')
+    postcodeAG() {
+        class Test {
+            @Validate({
+                Postcode: [PostcodeLocale.AG]
+            })
+            public postcode: string = '';
+        }
+        var test = new Test();
+        Chai.assert(Validator.Valid(test), 'Valid postcode fails');
+        // Test for invlaid
+        test.postcode = '0099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
+    }
+
+    @test('Postcode validator - AI')
+    postcodeAI() {
+        class Test {
+            @Validate({
+                Postcode: [PostcodeLocale.AI]
+            })
+            public postcode: string = 'AI-2640';
+        }
+        var test = new Test();
+        Chai.assert(Validator.Valid(test), 'Valid postcode fails');
+        // Test for invlaid
+        test.postcode = '0099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
+    }
+
+    @test('Postcode validator - AL')
+    postcodeAL() {
+        class Test {
+            @Validate({
+                Postcode: [PostcodeLocale.AL]
+            })
+            public postcode: string = '2640';
+        }
+        var test = new Test();
+        Chai.assert(Validator.Valid(test), 'Valid postcode fails');
+        // Test for invlaid
+        test.postcode = 'A099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
+        test.postcode = '00099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid long postcode fails');
+    }
+
+    @test('Postcode validator - AM')
+    postcodeAM() {
+        class Test {
+            @Validate({
+                Postcode: [PostcodeLocale.AM]
+            })
+            public postcode: string = '2640';
+        }
+        var test = new Test();
+        Chai.assert(Validator.Valid(test), 'Valid postcode fails');
+        // Test for invlaid
+        test.postcode = 'A099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
+        test.postcode = '00099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid long postcode fails');
+    }
+
+    @test('Postcode validator - AO')
+    postcodeAO() {
+        class Test {
+            @Validate({
+                Postcode: [PostcodeLocale.AO]
+            })
+            public postcode: string = '';
+        }
+        var test = new Test();
+        Chai.assert(Validator.Valid(test), 'Valid postcode fails');
+        // Test for invlaid
+        test.postcode = '0099';
+        Chai.assert(Validator.Valid(test) === false, 'Invalid postcode fails');
+    }
+
+    @test('Postcode validator - AQ')
+    postcodeAQ() {
+        class Test {
+            @Validate({
+                Postcode: [PostcodeLocale.AQ]
+            })
+            public postcode: string = 'BIQQ 1ZZ';
         }
         var test = new Test();
         Chai.assert(Validator.Valid(test), 'Valid postcode fails');
